@@ -12,6 +12,10 @@ const START_STATE_ITEMS = [
 		searchType: 'FV:2'
 	},
 	{
+		title: 'On This Device',
+		action: 'device'
+	},
+	{
 		title: 'Music Library',
 		action: 'library'
 	},
@@ -26,7 +30,7 @@ const START_STATE_ITEMS = [
 	{
 		title: 'Add New Music Services',
 		action: 'browseServices'
-	}
+	},
 ];
 
 let START_STATE = {
@@ -35,6 +39,25 @@ let START_STATE = {
 	title: 'Select a Music Source',
 	items: _.clone(START_STATE_ITEMS),
 };
+
+const DEVICE_STATE = {
+	title: 'Browse Music Library',
+	source: 'device',
+	items: [
+		{
+			title: 'Artists',
+			searchType: 'device:getArtists'
+		},
+		{
+			title: 'Albums',
+			searchType: 'device:getAlbums'
+		},
+		{
+			title: 'Tracks',
+			searchType: 'device:getTracks'
+		}
+	]
+}
 
 const LIBRARY_STATE = {
 	title: 'Browse Music Library',
@@ -74,7 +97,7 @@ const LIBRARY_STATE = {
 const DEFAULT_SEARCH_TARGET = 'artists';
 
 var BrowserListStore = _.assign({}, events.EventEmitter.prototype, {
-
+	DEVICE_STATE: DEVICE_STATE,
 	LIBRARY_STATE: LIBRARY_STATE,
 	_state : START_STATE,
 	_search :  false,

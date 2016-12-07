@@ -14,6 +14,8 @@
     "jquery-xml2json": "git+https://github.com/pascalopitz/jQuery-xml2json.git",
     "lodash": "^4.17.2",
     "moment": "^2.17.1",
+    "mime-types": "^2.1.13",
+    "music-tag": "0.0.9",
     "omit-keys": "^0.1.0",
     "preact": "^7.1.0",
     "preact-scroll-viewport": "^0.1.0",

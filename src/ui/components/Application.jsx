@@ -1,6 +1,7 @@
 import { h, Component } from 'preact'; //eslint-disable-line
 
 import SonosService from '../services/SonosService';
+import LocalDeviceService from '../services/LocalDeviceService';
 
 import CurrentTrack from './CurrentTrack';
 import QueueList from './QueueList';
@@ -24,6 +25,7 @@ class Application extends Component {
 
 	componentDidMount () {
 		SonosService.mount();
+		LocalDeviceService.mount.call(LocalDeviceService);
 	}
 
 	render () {

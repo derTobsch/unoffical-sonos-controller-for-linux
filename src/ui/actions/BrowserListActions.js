@@ -5,6 +5,7 @@ import Constants from '../constants/Constants';
 
 import SonosService from '../services/SonosService';
 import MusicServiceClient from '../services/MusicServiceClient';
+import LocalDeviceService from '../services/LocalDeviceService';
 
 import BrowserListStore from '../stores/BrowserListStore';
 
@@ -268,6 +269,14 @@ export default {
 			return;
 		}
 
+		if(item.action && item.action === 'device') {
+			Dispatcher.dispatch({
+				actionType: Constants.BROWSER_SELECT_ITEM,
+				state: BrowserListStore.DEVICE_STATE,
+			});
+			return;
+		}
+
 		if(item.action && item.action === 'linein') {
 			this._fetchLineIns().then((results) => {
 				let state = _.cloneDeep(item);
@@ -372,6 +381,22 @@ export default {
 			return;
 		}
 
+
+		if(item.searchType && item.searchType.indexOf('device:') !== -1) {
+			let state = {
+				title : item.title,
+			};
+
+			state.items = LocalDeviceService[item.searchType.replace('device:', '')].call(LocalDeviceService, item.searchParam || {});
+
+			Dispatcher.dispatch({
+				actionType: Constants.BROWSER_SELECT_ITEM,
+				state: state,
+			});
+			return;
+		}
+
+
 		if(item.searchType) {
 			prendinBrowserUpdate = {
 				title : item.title,
@@ -386,7 +411,7 @@ export default {
 		}
 
 		sonos.getMusicLibrary(objectId, {}, (err, result) => {
-			var state = prendinBrowserUpdate;
+			let state = prendinBrowserUpdate;
 			state.items = result.items;
 
 			Dispatcher.dispatch({
