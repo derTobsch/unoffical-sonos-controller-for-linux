@@ -6,6 +6,7 @@
   "main": "main.js",
   "dependencies": {
     "array-union": "^1.0.1",
+    "babel-plugin-transform-class-properties": "^6.19.0",
     "bluebird": "^3.4.6",
     "deep-equal": "^1.0.1",
     "flux": "^3.1.2",
