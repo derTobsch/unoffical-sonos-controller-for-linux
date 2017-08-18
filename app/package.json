@@ -8,6 +8,7 @@
     "array-union": "^1.0.1",
     "bluebird": "^3.5.0",
     "deep-equal": "^1.0.1",
+    "electron-react-devtools": "^0.4.0",
     "ip": "^1.1.5",
     "jquery-xml2json": "git+https://github.com/pascalopitz/jQuery-xml2json.git",
     "lodash": "^4.17.4",

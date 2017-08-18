@@ -56,7 +56,7 @@ class MusicServiceClient {
                     if (!err && (res.statusCode >= 400 || fault)) {
                         if (
                             fault &&
-                            fault.indexOf('TokenRefreshRequired') > -1
+                            _.includes(fault, 'TokenRefreshRequired')
                         ) {
                             const refreshDetails = _.get(
                                 e,
@@ -68,7 +68,7 @@ class MusicServiceClient {
 
                         if (
                             fault &&
-                            fault.indexOf('Update your Sonos system') > -1
+                            _.includes(fault, 'Update your Sonos system')
                         ) {
                             return this._doRequest(uri, action, body, headers);
                         }

@@ -45,7 +45,10 @@
     "appId": "com.electron.unoffcial.sonos.controller",
     "linux": {
       "category": "Audio",
-      "target": [ "deb", "appImage" ]
+      "target": [
+        "deb",
+        "appImage"
+      ]
     }
   },
   "jest": {
